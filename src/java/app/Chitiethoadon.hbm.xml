@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 2, 2017 11:04:18 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="app.Chitiethoadon" table="chitiethoadon" catalog="quanlybanhang" optimistic-lock="version">
+        <id name="maSp" type="string">
+            <column name="MaSP" length="10" />
+            <generator class="foreign">
+                <param name="property">sanpham</param>
+            </generator>
+        </id>
+        <many-to-one name="hoadon" class="app.Hoadon" fetch="select">
+            <column name="MaHD" length="10" not-null="true" />
+        </many-to-one>
+        <one-to-one name="sanpham" class="app.Sanpham" constrained="true"></one-to-one>
+        <property name="soLuongMua" type="string">
+            <column name="SoLuongMua" length="20" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

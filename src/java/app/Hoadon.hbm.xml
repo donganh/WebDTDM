@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 2, 2017 11:04:18 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="app.Hoadon" table="hoadon" catalog="quanlybanhang" optimistic-lock="version">
+        <id name="maHd" type="string">
+            <column name="MaHD" length="10" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="khachhang" class="app.Khachhang" fetch="select">
+            <column name="MaKH" length="11" not-null="true" />
+        </many-to-one>
+        <property name="ngayLap" type="date">
+            <column name="NgayLap" length="10" not-null="true" />
+        </property>
+        <set name="chitiethoadons" table="chitiethoadon" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MaHD" length="10" not-null="true" />
+            </key>
+            <one-to-many class="app.Chitiethoadon" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 2, 2017 11:04:18 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="app.Sanpham" table="sanpham" catalog="quanlybanhang" optimistic-lock="version">
+        <id name="maSp" type="string">
+            <column name="MaSP" length="11" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="loaisanpham" class="app.Loaisanpham" fetch="select">
+            <column name="MaLSP" length="11" not-null="true" />
+        </many-to-one>
+        <property name="tenSp" type="string">
+            <column name="TenSP" length="100" not-null="true" />
+        </property>
+        <property name="soLuong" type="int">
+            <column name="SoLuong" not-null="true" />
+        </property>
+        <property name="moTa" type="string">
+            <column name="MoTa" length="500" not-null="true" />
+        </property>
+        <one-to-one name="chitiethoadon" class="app.Chitiethoadon"></one-to-one>
+    </class>
+</hibernate-mapping>
