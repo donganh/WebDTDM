@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Order</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name="title">
+                    <h2>Order Manage</h2>
+                    <h5>Welcome Dong , Love to see you back. </h5>
+                </ui:define>
+            <ui:define name="manage">
+                            ID:<h:inputText value=""/>
+                            <br />
+                            Date:<h:inputText value=""/>
+                            <br />
+                            Customer ID:<h:inputText value=""/>
+                            <br />
+                            <h:link value="Add"/>
+                            <br/>
+            </ui:define>
+        <ui:define name="table">
+            <h:form>
+                <h:dataTable value="#{HDController.useList}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Order Id" style="margin-right: 150px"/>
+                        </f:facet>
+                        <h:outputText value="#{item.maHd}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Date" style="margin-right: 150px"/>
+                        </f:facet>
+                        <h:outputText value="#{item.ngayLap}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="customer ID" style="margin-right: 150px"/>
+                        </f:facet>
+                        <h:outputText value="#{item.khachhang}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Manage" style="margin-right: 50px"/>
+                        </f:facet>
+                        <h:link value="Edit "/>
+                        <h:link value="Delete"/>
+                    </h:column>
+                </h:dataTable>
+                <br/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+    </h:body>
+</html>
+
